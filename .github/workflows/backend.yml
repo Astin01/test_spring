@@ -32,20 +32,20 @@ jobs:
           distribution: 'temurin'
 
 
-      - name: Set PROD_PROP
-        run: |
-          mkdir -p src/main/resources
-          echo "${{ secrets.APPLICATION_PROD }}" | base64 --decode > src/main/resources/application-prod.properties
-          find src
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x ./gradlew
-
-      - name: Build with Gradle
-        run: ./gradlew build -x test
+#      - name: Set PROD_PROP
+#        run: |
+#          mkdir -p src/main/resources
+#          echo "${{ secrets.APPLICATION_PROD }}" | base64 --decode > src/main/resources/application-prod.properties
+#          find src
+#
+#      - name: Grant execute permission for gradlew
+#        run: chmod +x ./gradlew
+#
+#      - name: Build with Gradle
+#        run: ./gradlew build -x test
 
   sonarqube:
-    needs: build
+#    needs: build
     runs-on: ubuntu-latest
 
     steps:
