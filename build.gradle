@@ -16,6 +16,8 @@ sonar {
 	properties {
 		property "sonar.projectKey", "spring_test"
 		property "sonar.projectName", "spring_test"
+		property "sonar.host.url", "https://sonarcloud.io"
+		property "sonar.login", System.getenv("SONAR_TOKEN")
 	}
 }
 
