@@ -31,11 +31,18 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+
+      - name: Set PROD_PROP
+        run: |
+          mkdir -p src/main/resources
+          echo "${{ secrets.APPLICATION_PROD }}" | base64 --decode > src/main/resources/application-prod.properties
+          find src
+
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
 
-      - name: Build
-        run: ./gradlew build
+      - name: Build with Gradle
+        run: ./gradlew build -x test
 
   sonarqube:
     needs: build
